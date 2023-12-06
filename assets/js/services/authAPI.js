@@ -1,10 +1,17 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
+/**
+ * Position le token sur axios
+ * @param {string} token 
+ */
 function setAxiosToken(token) {
   axios.defaults.headers["Authorization"] = "Bearer " + token;
 }
 
+/**
+ * Mise en place du chargement de l'appliication
+ */
 function setup() {
   const token = window.localStorage.getItem("authToken");
   if (token) {
@@ -14,6 +21,11 @@ function setup() {
     }
   }
 }
+
+/**
+ * Permet de savoir si on est authentfie ou pas
+ * @returns boolean
+ */
 
 function isAuthenticated() {
   const token = window.localStorage.getItem("authToken");
@@ -27,6 +39,9 @@ function isAuthenticated() {
   return false;
 }
 
+/**
+ * Deconnexion
+ */
 function logout() {
   // On efface le token dans le localtstorge
   window.localStorage.removeItem("authToken");
@@ -34,6 +49,11 @@ function logout() {
   delete axios.defaults.headers["Authorization"];
 }
 
+
+/**
+ * Requete HTTP d'authentification et stockage du token dans localstorage et axios
+ * @param {object} credentials 
+ */
 function authenticate(credentials) {
   return axios
     .post("http://localhost:8000/api/login_check", credentials)

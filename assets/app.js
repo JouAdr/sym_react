@@ -1,4 +1,4 @@
-import React, { useContext, useState, StrictMode } from "react";
+import React, { useState, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Navbar from "./js/components/Navbar";
 import {
@@ -6,7 +6,6 @@ import {
   Switch,
   Route,
   withRouter,
-  Redirect,
 } from "react-router-dom";
 
 import "./styles/app.css";
@@ -20,17 +19,9 @@ import authAPI from "./js/services/authAPI";
 import AuthContext from "./js/contexts/AuthContext";
 import CustomerCreatePage from "./js/pages/customers/CustomerCreatePage";
 import InvoiceCreatePage from "./js/pages/invoices/InvoiceCreatePage";
+import PrivateRoute from "./js/components/PrivateRoute";
 
 authAPI.setup();
-
-const PrivateRoute = ({ path, component }) => {
-  const { isAuthenticated } = useContext(AuthContext);
-  return isAuthenticated ? (
-    <Route path={path} component={component} />
-  ) : (
-    <Redirect to="/login" />
-  );
-};
 
 const App = () => {
   const NavWithRouter = withRouter(Navbar);
