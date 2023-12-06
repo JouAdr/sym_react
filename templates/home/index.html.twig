@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sym-react
+{% endblock %}
+
+{% block stylesheets %}
+	{# <link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css"> #}
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css ">
+{% endblock %}
+
+{% block body %}
+	<div id="app">
+		<h1>Home page
+		</h1>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
