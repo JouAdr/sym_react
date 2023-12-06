@@ -1,2 +1,1 @@
-# sym_react
-# learn symfony and react
+# sym_react : application to learn symfony and react
