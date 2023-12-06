@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Navbar from "./js/components/Navbar";
 import {
@@ -66,4 +66,8 @@ const App = () => {
 
 const domNode = document.getElementById("app");
 const root = createRoot(domNode);
-root.render(<App />);
+root.render(
+<StrictMode>
+  <App />
+</StrictMode>
+);
