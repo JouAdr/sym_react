@@ -5,6 +5,7 @@ import Select from "../../components/Select";
 import customersAPI from "../../services/customersAPI";
 import axios from "axios";
 import invoicesAPI from "../../services/invoicesAPI";
+import toast from "react-hot-toast";
 
 const InvoiceCreatePage = ({ history, match }) => {
   const { id = "new" } = match.params;
@@ -72,10 +73,13 @@ const InvoiceCreatePage = ({ history, match }) => {
     try {
       if (editing) {
         await invoicesAPI.update(id, invoice);
+        toast('Facture modifier..');
         history.replace("/invoice");
+        
         // TODO: Flash notification success
       } else {
         await invoicesAPI.create(invoice);
+        toast('Facture creer..');
         history.replace("/invoice");
         // TODO: flash succes
       }

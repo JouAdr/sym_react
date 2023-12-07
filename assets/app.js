@@ -52,7 +52,7 @@ const App = () => {
         </div>
       </Router>
       <Toaster
-        position="bottom-right"
+        position="top-right"
         reverseOrder={false}
         gutter={8}
         containerClassName=""

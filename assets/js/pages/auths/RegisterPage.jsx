@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Field from "../../components/Field";
 import axios from "axios";
 import AuthContext from "../../contexts/AuthContext";
+import toast from "react-hot-toast";
 
 const RegisterPage = ({ history }) => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -40,6 +41,7 @@ const RegisterPage = ({ history }) => {
       );
       setErrors({});
       // TODO Flash success
+      toast(`Votre compte est crer avec success...`);
       history.replace("/login");
     } catch (error) {
       console.log(error.response);

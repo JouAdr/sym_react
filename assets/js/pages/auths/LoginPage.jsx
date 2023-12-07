@@ -28,7 +28,7 @@ const LoginPage = ({ history }) => {
       await AuthAPI.authenticate(credentials);
       setError("");
       setIsAuthenticated(true);
-      toast('Vous est connecte..');
+      toast(` Bienvenue ${credentials.username} `);
       history.replace("/customer");
     } catch (error) {
       setError("Les informations ne correspondent pas");

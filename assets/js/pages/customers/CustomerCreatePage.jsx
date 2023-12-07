@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Field from "../../components/Field";
 import customersAPI from "../../services/customersAPI";
+import toast from "react-hot-toast";
 
 const CustomerCreatePage = (props) => {
   const { id = "new" } = props.match.params;
@@ -52,11 +53,13 @@ const CustomerCreatePage = (props) => {
     try {
       if (editing) {
         await customersAPI.update(id, customer);
+        toast('Client editer..');
         props.history.replace("/customer");
         // TODO : flash notofication
       } else {
         await customersAPI.create(customer);
         // TODO : flash notofication
+        toast('Client creer..');
         props.history.replace("/customer");
       }
       setErrors("");
