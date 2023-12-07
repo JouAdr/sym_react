@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthAPI from "../../services/authAPI";
 import AuthContext from "../../contexts/AuthContext";
 import Field from "../../components/Field";
+import toast from "react-hot-toast";
 
 const LoginPage = ({ history }) => {
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const LoginPage = ({ history }) => {
     username: "",
     password: "",
   });
+
 
   // Gestion des champs
   const handleChange = ({ currentTarget }) => {
@@ -26,6 +28,7 @@ const LoginPage = ({ history }) => {
       await AuthAPI.authenticate(credentials);
       setError("");
       setIsAuthenticated(true);
+      toast('Vous est connecte..');
       history.replace("/customer");
     } catch (error) {
       setError("Les informations ne correspondent pas");
@@ -59,6 +62,7 @@ const LoginPage = ({ history }) => {
                 error={error}
                 type="password"
               />
+
               <div className="form-group">
                 <button type="submit" className="btn btn-success mr-sm-2">
                   Se connecter
@@ -68,6 +72,7 @@ const LoginPage = ({ history }) => {
             </form>
           </div>
         </div>
+        
       )}
     </>
   );

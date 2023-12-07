@@ -7,7 +7,6 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-
 import "./styles/app.css";
 import HomePage from "./js/pages/HomePage";
 import CustomerPage from "./js/pages/customers/CustomerPage";
@@ -20,6 +19,7 @@ import AuthContext from "./js/contexts/AuthContext";
 import CustomerCreatePage from "./js/pages/customers/CustomerCreatePage";
 import InvoiceCreatePage from "./js/pages/invoices/InvoiceCreatePage";
 import PrivateRoute from "./js/components/PrivateRoute";
+import { Toaster } from "react-hot-toast";
 
 authAPI.setup();
 
@@ -51,6 +51,22 @@ const App = () => {
           </Switch>
         </div>
       </Router>
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "green",
+            color: "#fff",
+          },
+        }}
+      />{" "}
     </AuthContext.Provider>
   );
 };
@@ -58,7 +74,7 @@ const App = () => {
 const domNode = document.getElementById("app");
 const root = createRoot(domNode);
 root.render(
-<StrictMode>
-  <App />
-</StrictMode>
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
